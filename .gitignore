@@ -1,0 +1,31 @@
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Xcode
+build/
+DerivedData/
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Package.resolved
+
+# SwiftWebUI / Vapor (if used)
+.vapor/
+.vapor-logs/
+Run/
+
+# GitHub Pages (if using gh-pages)
+docs/
+public/
+
+# Logs & Temporary Files
+*.log
+*.swp
+*.swo
+*.swn
