@@ -6,6 +6,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 NavigationLink("Personal Data", destination: PersonalDataView())
+                NavigationLink("Work Experience", destination: WorkExperienceView())
                 NavigationLink("Academic Credentials", destination: AcademicCredentialsView())
             }
             .navigationTitle("Portfolio")
