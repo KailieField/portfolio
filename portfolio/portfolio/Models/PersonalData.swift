@@ -18,5 +18,5 @@ let personalInfo = PersonalData(
     bio: "Multi-Technologist specializing in emerging tech, research and development.",
     resumeFileName: "resume",
     coverLetterFileName: "cover_letter",
-    careerGoal: "To innovate within the Quntum Realm and advance AI research."
+    careerGoal: "To innovate within the Quantum Realm and advanced Theoretical research."
     )
