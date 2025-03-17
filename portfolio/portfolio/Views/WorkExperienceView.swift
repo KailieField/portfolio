@@ -19,6 +19,9 @@ struct WorkExperienceView: View {
                 Text("From \(job.startDate) to \(job.endDate)")
                     .font(.body)
                     .padding(.bottom, 2)
+                Text(job.description)
+                    .font(.body)
+                    .padding(.bottom, 2)
             }
             
             .padding()

@@ -86,11 +86,6 @@ struct MenuView: View{
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .padding(.bottom)
-                
-                Text("MAINS")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.bottom)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
