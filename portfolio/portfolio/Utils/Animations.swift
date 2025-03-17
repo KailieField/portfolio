@@ -1,5 +1,6 @@
 import SwiftUI
 
+//--------------[ MENU ]--------------
 // --- Animation for Menu Elements || Transitory ---
 extension AnyTransition {
     static var moveAndFade: AnyTransition {
@@ -21,5 +22,13 @@ extension Animation {
 extension Animation {
     static func rotateHamburger(duration: Double = 0.3) -> Animation {
         return Animation.easeInOut(duration: duration)
+    }
+}
+
+// --- Pulsating Menu Icon ---
+extension Animation {
+    static func pulseEffect(duration: Double = 1.0) -> Animation {
+        return Animation.easeInOut(duration: duration)
+            .repeatForever(autoreverses: true)
     }
 }

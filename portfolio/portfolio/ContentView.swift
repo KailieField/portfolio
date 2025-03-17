@@ -5,6 +5,7 @@ struct ContentView: View {
     
     @State private var isMenuOpen = false
     @State private var isHamburgerRotated = false
+    @State private var isPulsating = false
 
     
     let sections = [
@@ -89,10 +90,15 @@ struct ContentView: View {
                                 .shadow(radius: 5)
                                 .rotationEffect(.degrees(isHamburgerRotated ? 45 : 0))
                                 .animation(.rotateHamburger(duration: 0.3), value: isHamburgerRotated)
+                                .scaleEffect(isPulsating ? 1.1 : 1)
+                                .animation(.pulseEffect(), value: isPulsating)
                             
                         }
                         .padding(.leading, 190)
                         .padding(.top, 10)
+                        .onAppear {
+                            isPulsating = true
+                        }
                         Spacer()
                     }
                     Spacer()
