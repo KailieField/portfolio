@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 
@@ -17,12 +16,46 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                Color.black
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
+                    HStack {
+                        Text("•")
+                            .font(.system(size: 60, weight: .ultraLight))
+                            .foregroundColor(.white)
+                        Text("╭")
+                            .font(.system(size: 60, weight: .ultraLight))
+                            .foregroundColor(.white)
+                        Text("╮")
+                            .font(.system(size: 60, weight: .ultraLight))
+                            .foregroundColor(.white)
+                        Text("•")
+                            .font(.system(size: 60, weight: .ultraLight))
+                            .foregroundColor(.white)
+                    }
+//                    Spacer()
                     Text("Kailie Field")
-                        .font(.largeTitle)
-                        .padding()
+                        .font(.system(size: 30, weight: .ultraLight, design: .monospaced))
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 30)
                     
-                    Spacer()
+                    HStack {
+                        Text("•")
+                            .font(.system(size: 60, weight: .ultraLight))
+                            .foregroundColor(.white)
+                        Text("╰")
+                            .font(.system(size: 60, weight: .ultraLight))
+                            .foregroundColor(.white)
+                        Text("╯")
+                            .font(.system(size: 60, weight: .ultraLight))
+                            .foregroundColor(.white)
+                        Text("•")
+                            .font(.system(size: 60, weight: .ultraLight))
+                            .foregroundColor(.white)
+                        
+                    }
+                    .padding(.horizontal, 20)
+                    
                 }
                 .blur(radius: isMenuOpen ? 5 : 0)
                 
@@ -42,9 +75,15 @@ struct ContentView: View {
                         }) {
                             Image(systemName: "line.horizontal.3") // -- hamburger menu icons
                                 .font(.title)
-                                .foregroundColor(.black)
+                                .foregroundColor(.white)
                                 .padding()
+                                .frame(width: 25, height: 25)
+                                .background(Color.white)
+                                .clipShape(Circle())
+                                .shadow(radius: 5)
                         }
+                        .padding(.leading, 190)
+                        .padding(.top, 10)
                         Spacer()
                     }
                     Spacer()
@@ -61,23 +100,28 @@ struct MenuView: View{
     var body: some View {
         VStack(alignment: .leading) {
             // --- menu header ---
-            Text("Kailie Field")
+            Text("Portfolio")
                 .font(.largeTitle)
+                .foregroundColor(.white)
                 .fontWeight(.bold)
                 .padding(.top)
             
             Divider()
+                .background(Color.white)
             // --- dynamic section links ---
             ForEach(sections, id: \.self) { section in
                 NavigationLink(destination: destinationView(for: section)){
                     Text(section)
                         .font(.title2)
                         .padding()
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .padding(.leading, 10)
+                        .background(VisualEffectView(blurStyle: .systemMaterialDark).cornerRadius(10))
+                        .hoverEffect(.highlight)
                 }
             }
             Divider()
+                .background(Color.white)
             Spacer()
             
             VStack {
@@ -90,9 +134,11 @@ struct MenuView: View{
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(Color.white)
+        .background(VisualEffectView(blurStyle: .systemMaterialDark))
+        .cornerRadius(20)
         .shadow(radius: 5)
     }
+    
     func destinationView(for section: String) -> some View {
         switch section {
         case "Personal Data":
