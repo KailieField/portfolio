@@ -1,20 +1,19 @@
 import SwiftUI
 import PDFKit
 
+
+// ---- PDFViewer: Showing the PDF content
 struct PDFViewer: View{
     var url: URL
     
     var body: some View{
-        NavigationView{
-            PDFKitView(url: url)
-                .navigationBarTitle("Cover Letter", displayMode: .inline)
-//                .navigationBarItems(leading: Button("Back"){
-//                    
-//                })
+            PDFKitView(url: url) // --- rendering PDFKitView
+                .navigationBarTitle("Cover Letter", displayMode: .inline) // --- sheet title
                 .edgesIgnoringSafeArea(.all)
         }
     }
-//}
+
+// --- PDFKitView: managing the PDF for display
 struct PDFKitView: UIViewRepresentable{
     var url: URL
     
@@ -51,9 +50,8 @@ struct PersonalDataView: View {
             Divider()
             
             //---- cover letter button ----
-            Button(action: {
-                showCoverLetterPDF.toggle() // -- open cover letter PDF
-            }) {
+            NavigationLink(destination: PDFViewer(url: Bundle.main.url(forResource: data.coverLetterFileName, withExtension: "pdf")!)
+            ){
                 Label("Cover Letter", systemImage: "doc.text")
                     .padding()
                     .frame(maxWidth: .infinity)
