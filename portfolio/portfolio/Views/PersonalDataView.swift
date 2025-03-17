@@ -20,12 +20,18 @@ struct PDFKitView: UIViewRepresentable{
     func makeUIView(context: Context) -> PDFView{
         let pdfView = PDFView()
         pdfView.autoScales = true
+        pdfView.displayMode = .singlePageContinuous
+        pdfView.displaysPageBreaks = false
+        pdfView.displayDirection = .vertical
         return pdfView
     }
     
     func updateUIView(_ uiView: PDFView, context: Context){
         if let document = PDFDocument(url: url){
-            uiView.document = document
+            uiView.document = document // -- load PDF documents
+            DispatchQueue.main.async{
+                uiView.goToFirstPage(nil)
+            }
         }
     }
 }
@@ -33,6 +39,7 @@ struct PDFKitView: UIViewRepresentable{
 struct PersonalDataView: View {
     let data = personalInfo
     @State private var showCoverLetterPDF = false
+    @State private var showResumePDF = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10){
@@ -60,15 +67,10 @@ struct PersonalDataView: View {
                     .cornerRadius(10)
             }
             .padding(.bottom)
-            .sheet(isPresented: $showCoverLetterPDF){
-                if let url = Bundle.main.url(forResource: data.coverLetterFileName, withExtension: "pdf"){
-                    PDFViewer(url: url) // -- show PDF when the sheet is presented
-                }
-            }
+
             //---- resume button ----
-            Button(action: {
-                openPDF(named: data.resumeFileName) // -- open resume
-            }) {
+            NavigationLink(destination: PDFViewer(url: Bundle.main.url(forResource: data.resumeFileName, withExtension: "pdf")!)
+             ){
                 Label("Resume", systemImage: "doc.text")
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -77,7 +79,7 @@ struct PersonalDataView: View {
                     .cornerRadius(10)
             }
         }
-        .navigationBarTitle("About Me")
+        .navigationBarTitle("Portfolio")
         .padding()
     }
     

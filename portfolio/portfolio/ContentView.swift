@@ -5,14 +5,15 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink("About Me", destination: PersonalDataView())
-                NavigationLink("Work Experience", destination: WorkExperienceView())
-                NavigationLink("Academic Credentials", destination: AcademicCredentialsView())
+                NavigationLink("Resume", destination: PersonalDataView())
+                NavigationLink("Academic Writing", destination: BlogWritingView())
+//                NavigationLink("Work Experience", destination: WorkExperienceView())
+//                NavigationLink("Academic Credentials", destination: AcademicCredentialsView())
                 
                 Divider()
                     
             }
-            .navigationTitle("Resume")
+            .navigationTitle("Portfolio")
         }
     }
 }
