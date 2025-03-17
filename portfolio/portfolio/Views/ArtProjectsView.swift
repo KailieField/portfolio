@@ -19,8 +19,10 @@ struct ArtProjectsView: View {
                             }
                         }
                     }
+
                     .background(Color.black)
                 }
+
                 .edgesIgnoringSafeArea(.all)
                 .navigationBarTitle("Art Projects", displayMode: .inline)
                 .navigationBarHidden(true)
@@ -61,3 +63,9 @@ struct ArtProjectsDetailView: View {
     ArtProjectsView()
 }
 
+
+//struct ArtProjectsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ArtProjectsView()
+//    }
+//}
