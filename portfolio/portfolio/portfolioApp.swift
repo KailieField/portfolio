@@ -26,6 +26,8 @@ struct portfolioApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .background(Color.black)
+                .edgesIgnoringSafeArea(.all)
         }
         .modelContainer(sharedModelContainer)
     }

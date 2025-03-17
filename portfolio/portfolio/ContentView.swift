@@ -12,8 +12,8 @@ struct ContentView: View {
         "Personal Data",
         "Work History",
         "Education",
-        "Academic Work"
-//        "Hobbies"
+        "Academic Work",
+        "Art Projects"
     ]
     
     var body: some View {
@@ -106,6 +106,7 @@ struct ContentView: View {
             }
             .navigationBarHidden(true) // hide nav bar in ContentView
         }
+        .background(Color.black)
     }
 }
 
@@ -172,8 +173,8 @@ struct MenuView: View{
             return AnyView(AcademicCredentialsView())
         case "Academic Work":
             return AnyView(BlogWritingView())
-//        case "Hobbies":
-//            return AnyView(HobbiesView())
+        case "Art Projects":
+            return AnyView(ArtProjectsView())
         default:
             return AnyView(Text("Coming soon!"))
         }
