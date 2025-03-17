@@ -7,7 +7,7 @@ struct BlogWriting{
 
 let blogWritingExamples = [
     BlogWriting(category: "Economic & Ecological", examples: [
-        "Ecological Footprint: Personal and Professional",
+        "Ecological Footprint Personal and Professional",
         "True Cost Accounting"
     ]),
     BlogWriting(category: "Philosophy", examples: [
@@ -15,8 +15,8 @@ let blogWritingExamples = [
         "The Unexamined Life"
     ]),
     BlogWriting(category: "Science of Conquest", examples: [
-        "'Time': A Weaponized Assist",
-        "The Science of Conquest: Course Review"
+        "Time as a Weaponized Assist",
+        "The Science of Conquest Course Review"
     ]),
     
 ]

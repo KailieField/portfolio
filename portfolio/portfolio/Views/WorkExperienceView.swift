@@ -24,7 +24,7 @@ struct WorkExperienceView: View {
             .padding()
         }
         
-        .navigationTitle("Work Experience")
+        .navigationTitle("Work History")
     }
 }
 

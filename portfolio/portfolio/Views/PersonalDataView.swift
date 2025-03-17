@@ -50,7 +50,7 @@ struct PersonalDataView: View {
             Text(data.bio)
                 .font(.body)
             
-            Text("Career Goal: \(data.careerGoal)")
+            Text("\(data.careerGoal)")
                 .font(.headline)
                 .padding(.top, 5)
             
@@ -79,7 +79,7 @@ struct PersonalDataView: View {
                     .cornerRadius(10)
             }
         }
-        .navigationBarTitle("Portfolio")
+        .navigationBarTitle("Personal Data")
         .padding()
     }
     
