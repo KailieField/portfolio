@@ -4,6 +4,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var isMenuOpen = false
+    @State private var isHamburgerRotated = false
+
     
     let sections = [
         "Personal Data",
@@ -60,20 +62,24 @@ struct ContentView: View {
                 .blur(radius: isMenuOpen ? 5 : 0)
                 
                 HStack {
-                    MenuView(sections: sections)
+                    
+                    MenuView(sections: sections, isMenuOpen: $isMenuOpen)
                         .frame(width: 250)
                         .offset(x: isMenuOpen ? 0 : -250)
                         .animation(.easeInOut, value: isMenuOpen)
+                        .transition(.moveAndFade)
                     
                     Spacer()
                 }
                 
                 VStack {
                     HStack {
+                        
                         Button(action: {
                             isMenuOpen.toggle()
                         }) {
-                            Image(systemName: "line.horizontal.3") // -- hamburger menu icons
+                            
+                            Image(systemName: isHamburgerRotated ? "xmark" : "line.horizontal.3") // -- hamburger menu icons
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .padding()
@@ -81,6 +87,9 @@ struct ContentView: View {
                                 .background(Color.white)
                                 .clipShape(Circle())
                                 .shadow(radius: 5)
+                                .rotationEffect(.degrees(isHamburgerRotated ? 45 : 0))
+                                .animation(.rotateHamburger(duration: 0.3), value: isHamburgerRotated)
+                            
                         }
                         .padding(.leading, 190)
                         .padding(.top, 10)
@@ -96,28 +105,36 @@ struct ContentView: View {
 
 struct MenuView: View{
     let sections: [String]
+    @Binding var isMenuOpen: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
             // --- menu header ---
             Text("Portfolio")
-                .font(.largeTitle)
+                .font(.system(size: 30, weight: .ultraLight, design: .monospaced))
                 .foregroundColor(.white)
                 .fontWeight(.bold)
                 .padding(.top)
             
             Divider()
                 .background(Color.white)
+            
             // --- dynamic section links ---
             ForEach(sections, id: \.self) { section in
+                
                 NavigationLink(destination: destinationView(for: section)){
+                    
                     Text(section)
-                        .font(.title2)
+                        .font(.system(size: 15, weight: .ultraLight, design: .monospaced))
                         .padding()
                         .foregroundColor(.white)
                         .padding(.leading, 10)
-                        .background(VisualEffectView(blurStyle: .systemMaterialDark).cornerRadius(10))
-                        .hoverEffect(.highlight)
+                        .background(
+                            VisualEffectView(blurStyle: .systemMaterialDark).cornerRadius(10))
+                    //                        .hoverEffect(.highlight)
+                        .padding(.vertical, 20)
+                        .scaleEffect(isMenuOpen ? 1.1 : 1)
+                        .animation(.easeInOut(duration: 0.3), value: isMenuOpen)
                 }
             }
             Divider()

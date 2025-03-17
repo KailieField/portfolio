@@ -1,6 +1,7 @@
 import SwiftUI
 import UIKit
 
+
 // --- Component for aplpying glassmorphism frost ---
 
 struct VisualEffectView: UIViewRepresentable {
